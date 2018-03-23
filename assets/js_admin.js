@@ -85,17 +85,17 @@ jQuery(function ($) {
     });
 
     //заполнение title и src картинки
-    $('#image_title').on('input' ,function () {
+    $('.inside').on('input', '#image_title', function () {
         var row = $(this).attr('name').slice(-1);
-        alert(row);
         var title = $(this).val();
-        $('.nicEdit-main .zhbox1 #image_title1').empty();
-        $('.nicEdit-main .zhbox1 #image_title1').append(title);
+        $('.nicEdit-main .zhbox'+row+' .image_title'+row+'').empty();
+        $('.nicEdit-main .zhbox'+row+' .image_title'+row+'').append(title);
     });
-    $('#image_src1').on('input' ,function () {
+    $('.inside').on('input', '#image_src', function () {
+        var row = $(this).attr('name').slice(-1);
         var src = $(this).val();
-        $('.nicEdit-main .zhbox1 #image_src1').empty();
-        $('.nicEdit-main .zhbox1 #image_src1').append(src);
+        $('.nicEdit-main .zhbox'+row+' .image_src'+row+'').empty();
+        $('.nicEdit-main .zhbox'+row+' .image_src'+row+'').append(src);
     });
 
 });
