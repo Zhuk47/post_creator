@@ -25,16 +25,6 @@ jQuery(function ($) {
             //скрываем блоки с картинками в текстовом редакторе
             $('.nicEdit-main div').hide();
 
-            // var textarea = $('.zhtextarea');
-            // var src = $('img#imageboxsrc' + row + '').attr('src');
-            // var p = $('.nicEdit-main p');
-            // textarea.val(textarea.val() + '<div class="zhbox' + row + '">');
-            // textarea.val(textarea.val() + '<h3 class="image_title' + row + '">' + $('input[name=image_title' + row + ']').val() + '</h3>');
-            // textarea.val(textarea.val() + '<img class="imageboxsrc" id="imageboxsrc' + row + '" src="' + src + '">');
-            // textarea.val(textarea.val() + '<div class="image_src' + row + '">' + $('input[name=image_src' + row + ']').val() + '</div>');
-            // textarea.val(textarea.val() + '</div>');
-            // textarea.val(p.html() + textarea.val());
-
             wp.media.editor.send.attachment = send_attachment_bkp;
 
         };
@@ -52,11 +42,7 @@ jQuery(function ($) {
         // убрать картинку из формы записи
         var name = ($(this).prev().prev().attr('name'));
         var row = name.slice(-1);
-        // $('.nicEdit-main img#imageboxsrc' + row + '').remove();
-        // $('.nicEdit-main h3.image_title' + row + '').remove();
-        // $('.nicEdit-main div.image_src' + row + '').remove();
         $('div.zhbox' + row + '').remove();
-        // $('.nicEdit-main div:empty').not('div[class^=zhbox]').remove();
     });
 
     //перемещение блоков с картинками

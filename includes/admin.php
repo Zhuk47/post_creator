@@ -20,7 +20,6 @@ function zh_post_editor_add_editor()
 {
     wp_enqueue_script('nicEdit', plugins_url('zh_post_editor/assets/nicEdit/nicEdit.js'));
     wp_enqueue_script('myuploadscript', plugins_url('zh_post_editor/assets/js_admin.js'));
-//	wp_enqueue_style( 'main', plugins_url( 'zh_post_editor/assets/css/main.css' ) );
     wp_enqueue_style('nicEditGif', plugins_url('zh_post_editor/assets/nicEdit/nicEditorIcons.gif'));
 }
 
@@ -57,12 +56,6 @@ function zh_post_editor_print_textarea_box($post)
     $html .= '<label><textarea id="zhTextarea" class="zhTextarea" name="post_content" style="width: 99%; height: 300px">';
     $html .= get_post_field('post_content', $post->ID, 'edit');
     $html .= '</textarea></label>';
-//    $html .= '<label><div id="zhTextarea" class="zhtextarea" name="post_content" style="width: 99%; height: 300px" contenteditable="true">';
-//    $html .= get_post_field('post_content', $post->ID, 'edit');
-//    $html .= '</div></label>';
-//    $html .= '<label><textarea id="zhTextarea" class="zhtextarea" name="post_content" style="width: 99%; height: 300px">';
-//    $html .= get_post_field('post_content', $post->ID, 'edit');
-//    $html .= '</textarea></label>';
     $html .= '<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>';
     echo $html;
 }
