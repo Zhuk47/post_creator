@@ -419,7 +419,7 @@ var nicEditorInstance = bkClass.extend({
                 borderTop: 0,
                 overflowY: "auto",
                 overflowX: "hidden",
-                height: "300px"
+                height: "140px"
             };
             E[(B) ? "height" : "maxHeight"] = (this.ne.options.maxHeight) ? this.ne.options.maxHeight + "px" : null;
             this.editorContain = new bkElement("DIV").setStyle(E).appendBefore(G);

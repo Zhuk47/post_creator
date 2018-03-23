@@ -18,9 +18,9 @@ jQuery(function ($) {
 
             //добавляем в textarea
             $('.nicEdit-main').append('<div class="zhbox' + row + '">');
-            $('div.zhbox' + row + '').append('<h3 id="image_title" class="image_title' + row + '">' + $('input[name=image_title' + row + ']').val() + '</h3>');
+            $('div.zhbox' + row + '').append('<h3 id="image_title' + row + '" class="image_title' + row + '">' + $('input[name=image_title' + row + ']').val() + '</h3>');
             $('img#imageboxsrc' + row + '').clone().appendTo('div.zhbox' + row + '');
-            $('div.zhbox' + row + '').append('<div id="image_src" class="image_src' + row + '">' + $('input[name=image_src' + row + ']').val() + '</div></div>');
+            $('div.zhbox' + row + '').append('<div id="image_src' + row + '" class="image_src' + row + '">' + $('input[name=image_src' + row + ']').val() + '</div></div>');
 
             //скрываем блоки с картинками в текстовом редакторе
             $('.nicEdit-main div').hide();
@@ -48,7 +48,8 @@ jQuery(function ($) {
     //перемещение блоков с картинками
     $('body').on('click', ".inside :button[value=down]", function () {
         $(this).closest('.zhbox').insertAfter($(this).closest('.zhbox').next());
-
+        var name = $(this).prev().prev().attr('name');
+        var row = name.slice(-1);
         $('div.zhbox' + row + '').closest('div[class^=zhbox]').insertAfter($('div.zhbox' + row + '').closest('div[class^=zhbox]').next());
     });
     $('body').on('click', ".inside :button[value=up]", function () {
@@ -83,5 +84,15 @@ jQuery(function ($) {
         $('.nicEdit-main .zhbox'+row+' .image_src'+row+'').empty();
         $('.nicEdit-main .zhbox'+row+' .image_src'+row+'').append(src);
     });
+
+    $(window).load(function () {
+        var num = $('.nicEdit-main div[class^=zhbox]').length;
+        if (num > 1) {
+            for (var i = 2; i <= num; i++) {
+                $('#zhaddblock').click();
+            }
+        }
+        // alert("В посте " + num + " блока с картинками");
+    })
 
 });
