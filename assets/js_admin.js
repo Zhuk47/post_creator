@@ -43,17 +43,19 @@ jQuery(function ($) {
         var name = ($(this).prev().prev().attr('name'));
         var row = name.slice(-1);
         $('div.zhbox' + row + '').remove();
+        $('input[name=image_title' + row + ']').val('');
+        $('input[name=image_src' + row + ']').val('');
     });
 
     //перемещение блоков с картинками
     $('body').on('click', ".inside :button[value=down]", function () {
-        $(this).closest('.zhbox').insertAfter($(this).closest('.zhbox').next());
+        $(this).closest('.zbox').insertAfter($(this).closest('.zbox').next());
         var name = $(this).prev().prev().attr('name');
         var row = name.slice(-1);
         $('div.zhbox' + row + '').closest('div[class^=zhbox]').insertAfter($('div.zhbox' + row + '').closest('div[class^=zhbox]').next());
     });
     $('body').on('click', ".inside :button[value=up]", function () {
-        $(this).closest('.zhbox').insertBefore($(this).closest('.zhbox').prev());
+        $(this).closest('.zbox').insertBefore($(this).closest('.zbox').prev());
         var name = $(this).prev().attr('name');
         var row = name.slice(-1);
         $('div.zhbox' + row + '').closest('div[class^=zhbox]').insertBefore($('div.zhbox' + row + '').closest('div[class^=zhbox]').prev());
@@ -61,13 +63,22 @@ jQuery(function ($) {
 
     //автонумерация
     $('body').on('click', ".autonumbering", function () {
-        var count = $('#imagebox .inside .zhbox').length;
-        for (i = 1; i <= count; i++) {
+        var count = $('#imagebox .inside .zbox').length;
+        var j = 1;
+        for (var i = 0; i <= count; i++) {
             if ($(".autonumbering").is(":checked")) {
-                $('#zhbox' + i + '').prepend('<b>' + i + '. </b>');
+                $('#zbox' + i + '').prepend('<b>' + j + '. </b>');
+                $('.zhbox' + i + '').prepend('<h3 id="zhnum">'+j+'. </h3>');
             } else {
-                $('#zhbox' + i + ' b').remove();
+                $('#zbox' + i + ' b').remove();
+                document.getElementById("zhnum").remove();
+                // $('#zhbox' + i + ' h3#num').remove();
+                // alert($('.zhbox' + i + ' h3').text().replace(''+j+'.', ''));
+                var text = $('.zhbox' + i + ' h3').text();
+                text = text.replace(''+j+'. ', '');
+                $('.zhbox' + i + ' h3').text(text);
             }
+            j++;
         }
     });
 
@@ -75,24 +86,34 @@ jQuery(function ($) {
     $('.inside').on('input', '#image_title', function () {
         var row = $(this).attr('name').slice(-1);
         var title = $(this).val();
-        $('.nicEdit-main .zhbox'+row+' .image_title'+row+'').empty();
-        $('.nicEdit-main .zhbox'+row+' .image_title'+row+'').append(title);
+        $('.nicEdit-main .zhbox' + row + ' .image_title' + row + '').empty();
+        $('.nicEdit-main .zhbox' + row + ' .image_title' + row + '').append(title);
     });
     $('.inside').on('input', '#image_src', function () {
         var row = $(this).attr('name').slice(-1);
         var src = $(this).val();
-        $('.nicEdit-main .zhbox'+row+' .image_src'+row+'').empty();
-        $('.nicEdit-main .zhbox'+row+' .image_src'+row+'').append(src);
+        $('.nicEdit-main .zhbox' + row + ' .image_src' + row + '').empty();
+        $('.nicEdit-main .zhbox' + row + ' .image_src' + row + '').append(src);
     });
 
+    //отображение картинок поста в редакторе
     $(window).load(function () {
+        var array = [];
+        $('.nicEdit-main div[class^=zhbox]').each(function () {
+            array += $(this).attr('class').slice(-1);
+        });
         var num = $('.nicEdit-main div[class^=zhbox]').length;
         if (num > 1) {
-            for (var i = 2; i <= num; i++) {
+            for (var i = 0; i <= num-1; i++) {
                 $('#zhaddblock').click();
+                var title = $('.zhbox' + array[i] + ' h3').text();
+                $('.zbox input[name=image_title' + i + ']').val(title);
+                var img = $('.zhbox' + array[i] + ' img').attr('src');
+                $('.zbox img[id=imageboxsrc' + i + ']').attr('src', img);
+                var src = $('.zhbox' + array[i] + ' div').text();
+                $('.zbox input[name=image_src' + i + ']').val(src);
             }
         }
-        // alert("В посте " + num + " блока с картинками");
     })
 
 });

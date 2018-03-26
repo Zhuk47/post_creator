@@ -70,9 +70,9 @@ function zh_post_editor_print_addblock_box($post)
     $html .= ' ';
     $html .= '<button type="button" id="insert-media-button" class="button insert-media add_media">Загрузить картинки</button></label>';
     $html .= '<script>
-	    var row = 2;
+	    var row = 1;
 	    jQuery("body").on("click", "#zhaddblock", function() {
-            var html = `<div class="zhbox" id="zhbox`+row+`"><input id="image_title" name="image_title`+row+`" placeholder="Заголовок картинки"/> <input type="button" value="up"> <input type="button" value="down"> <div></br></div><img class="imageboxsrc" id="imageboxsrc`+row+`" src=""/><div><input type="hidden" class="button imagebox_image" name="imagebox_image`+row+`" value=""/>   <button type="button" id="insert-media-button" class="upload_image_button button insert-media add_media">Вставить из библиотеки</button> <button type="button" class="remove_image_button button add_media">Удалить изображение</button></div><div></br></div><input id="image_src" name="image_src`+row+`" placeholder="Ссылка"/></div>`;
+            var html = `<div class="zbox" id="zbox`+row+`"><input id="image_title" name="image_title`+row+`" placeholder="Заголовок картинки"/> <input type="button" value="up"> <input type="button" value="down"> <div></br></div><img class="imageboxsrc" id="imageboxsrc`+row+`" src=""/><div><input type="hidden" class="button imagebox_image" name="imagebox_image`+row+`" value=""/>   <button type="button" id="insert-media-button" class="upload_image_button button insert-media add_media">Вставить из библиотеки</button> <button type="button" class="remove_image_button button add_media">Удалить изображение</button></div><div></br></div><input id="image_src" name="image_src`+row+`" placeholder="Ссылка"/></div>`;
             $(html).appendTo($("#imagebox .inside"));
             row++;
         });
@@ -88,19 +88,19 @@ function zh_post_editor_print_imagebox_box($post)
     wp_nonce_field(basename(__FILE__), 'seo_imagebox_metabox_nonce');
     $html = '';
     if ($image_id) {
-        $html .= '<div class="zhbox" id="zhbox1"><input id="image_title" name="image_title1" placeholder="Заголовок картинки"/> <input type="button" value="up"> <input type="button" value="down"> ';
+        $html .= '<div class="zbox" id="zbox0"><input id="image_title" name="image_title0" placeholder="Заголовок картинки"/> <input type="button" value="up"> <input type="button" value="down"> ';
         $html .= '<div></br></div>';
-        $html .= '<img class="imageboxsrc" id="imageboxsrc1" src="' . $image[0] . '"/>';
-        $html .= '<div><input type="hidden" class="button imagebox_image" name="imagebox_image1" value="' . $image_id . '"/><button type="button" id="insert-media-button" class="upload_image_button button insert-media add_media">Вставить из библиотеки</button> <button type="button" class="remove_image_button button add_media">Удалить изображение</button></div>';
+        $html .= '<img class="imageboxsrc" id="imageboxsrc0" src="' . $image[0] . '"/>';
+        $html .= '<div><input type="hidden" class="button imagebox_image" name="imagebox_image0" value="' . $image_id . '"/><button type="button" id="insert-media-button" class="upload_image_button button insert-media add_media">Вставить из библиотеки</button> <button type="button" class="remove_image_button button add_media">Удалить изображение</button></div>';
         $html .= '<div></br></div>';
-        $html .= '<input id="image_src" name="image_src1" placeholder="Ссылка"/></div>';
+        $html .= '<input id="image_src" name="image_src0" placeholder="Ссылка"/></div>';
     } elseif (!$image_id) {
-        $html .= '<div class="zhbox" id="zhbox1"><input id="image_title" name="image_title1" placeholder="Заголовок картинки"/> <input type="button" value="up"> <input type="button" value="down"> ';
+        $html .= '<div class="zbox" id="zbox0"><input id="image_title" name="image_title0" placeholder="Заголовок картинки"/> <input type="button" value="up"> <input type="button" value="down"> ';
         $html .= '<div></br></div>';
-        $html .= '<img class="imageboxsrc" id="imageboxsrc1" src=""/>';
-        $html .= '<div><input type="hidden" class="button imagebox_image" name="imagebox_image1" value=""/>   <button type="button" id="insert-media-button" class="upload_image_button button insert-media add_media">Вставить из библиотеки</button> <button type="button" class="remove_image_button button add_media">Удалить изображение</button></div>';
+        $html .= '<img class="imageboxsrc" id="imageboxsrc0" src=""/>';
+        $html .= '<div><input type="hidden" class="button imagebox_image" name="imagebox_image0" value=""/>   <button type="button" id="insert-media-button" class="upload_image_button button insert-media add_media">Вставить из библиотеки</button> <button type="button" class="remove_image_button button add_media">Удалить изображение</button></div>';
         $html .= '<div></br></div>';
-        $html .= '<input id="image_src" name="image_src1" placeholder="Ссылка"/></div>';
+        $html .= '<input id="image_src" name="image_src0" placeholder="Ссылка"/></div>';
     }
     echo $html;
 }
