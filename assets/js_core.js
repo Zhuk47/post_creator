@@ -4,6 +4,6 @@
 
 jQuery(function ($) {
 
-    $('.entry-content div').show();
+    $('.post-content div').show();
 
 });
