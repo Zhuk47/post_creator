@@ -18,6 +18,7 @@ add_action('init', 'zh_post_editor_remove_editor');
 // добавляем свой editor
 function zh_post_editor_add_editor()
 {
+    wp_enqueue_script("jquery");
     wp_enqueue_script('nicEdit', plugins_url('zh_post_editor/assets/nicEdit/nicEdit.js'));
     wp_enqueue_script('myuploadscript', plugins_url('zh_post_editor/assets/js_admin.js'));
     wp_enqueue_style('nicEditGif', plugins_url('zh_post_editor/assets/nicEdit/nicEditorIcons.gif'));
@@ -99,7 +100,7 @@ function zh_post_editor_print_imagebox_box($post)
         $html .= '<div class="zbox" id="zbox0"><input id="image_title" name="image_title0" placeholder="Заголовок картинки"/> <input type="button" value="up"> <input type="button" value="down"> ';
         $html .= '<div></br></div>';
         $html .= '<img class="imageboxsrc" id="imageboxsrc0" src=""/>';
-        $html .= '<div><input type="hidden" class="button imagebox_image" name="imagebox_image0" value=""/>   <button type="button" id="insert-media-button0" class="upload_image_button button insert-media add_media">Вставить из библиотеки</button> <button type="button" id="zhremove0" class="remove_image_button button add_media">Удалить изображение</button></div>';
+        $html .= '<div><input type="hidden" class="button imagebox_image" name="imagebox_image0" value=""/>   <div id="zhbut"><button type="button" id="insert-media-button0" class="upload_image_button button insert-media add_media">Вставить из библиотеки</button> <button type="button" id="zhremove0" class="remove_image_button button add_media">Удалить изображение</button></div></div>';
         $html .= '<div></br></div>';
         $html .= '<input id="image_src" name="image_src0" placeholder="Ссылка"/></div>';
     }

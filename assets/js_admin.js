@@ -21,8 +21,12 @@ jQuery(function ($) {
                 $('div.zhbox' + row + '').append('<h2 id="image_title' + row + '" class="image_title' + row + '">' + $('input[name=image_title' + row + ']').val() + '</h2>');
                 $('div.zhbox' + row + '').append('<figure><img id="imageboxsrc' + row + '" src="' + source + '"></figure>');
             }
+            //скрываем блоки с картинками в текстовом редакторе
+            $('.nicEdit-main div').hide();
+
             $('#zhaddblock').click();
             row++;
+
         };
     });
 
@@ -127,11 +131,13 @@ jQuery(function ($) {
         $('.zbox img#imageboxsrc' + row + '').attr('src', src);
         if ($('.nicEdit-main div.zhbox' + row + '').length > 0) {
             $('.nicEdit-main .zhbox' + row + ' figure').remove();
+            $('div.zhbox' + row + '').append('<h2 id="image_title' + row + '" class="image_title' + row + '"></h2>');
             $('div.zhbox' + row + '').append('<figure>');
             $('div.zhbox' + row + ' figure').append('<img id="imageboxsrc' + row + '" src="' + src + '">');
             $('div.zhbox' + row + ' figure').append('<figcaption><a href="' + src + '" target="_blank">' + site + '</a></figcaption>');
         } else {
             $('.nicEdit-main').append('<div class="zhbox' + row + '">');
+            $('div.zhbox' + row + '').append('<h2 id="image_title' + row + '" class="image_title' + row + '"></h2>');
             $('div.zhbox' + row + '').append('<figure>');
             $('div.zhbox' + row + ' figure').append('<img id="imageboxsrc' + row + '" src="' + src + '">');
             $('div.zhbox' + row + ' figure').append('<figcaption><a href="' + src + '" target="_blank">' + site + '</a></figcaption>');
@@ -149,7 +155,7 @@ jQuery(function ($) {
             array += $(this).attr('class').slice(-1);
         });
         var num = $('.nicEdit-main div[class^=zhbox]').length;
-        if (num > 1) {
+        if (num > 0) {
             for (var i = 0; i <= num - 1; i++) {
                 $('#zhaddblock').click();
                 var title = $('.zhbox' + array[i] + ' h2').text();
