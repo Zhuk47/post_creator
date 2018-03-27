@@ -26,7 +26,6 @@ jQuery(function ($) {
 
             $('#zhaddblock').click();
             row++;
-
         };
     });
 
