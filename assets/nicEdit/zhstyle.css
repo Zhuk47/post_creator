@@ -38,3 +38,7 @@
     border-radius: 3px;
     white-space: nowrap;
 }
+
+img[id^=imageboxsrc] {
+    margin-left: 10px;
+}

@@ -5,5 +5,6 @@
 jQuery(function ($) {
 
     $('.post-content div').show();
+    $('.entry-content div').show();
 
 });
