@@ -31,7 +31,7 @@ add_action('admin_enqueue_scripts', 'zh_post_editor_add_editor');
 // добавляем метабоксы
 function zh_post_editor_meta_box()
 {
-    add_meta_box('autonumbering', 'Автонумерация', 'zh_post_editor_print_box', 'post', 'normal', 'high');
+    add_meta_box('autonumbering', 'Автонумерация', 'zh_post_editor_print_box', 'post', 'side', 'high');
     add_meta_box('textarea', 'Вступительный текст', 'zh_post_editor_print_textarea_box', 'post', 'normal', 'high');
     add_meta_box('addblock', 'Добавление блоков', 'zh_post_editor_print_addblock_box', 'post', 'advanced', 'high');
     add_meta_box('imagebox', 'Блок изображения', 'zh_post_editor_print_imagebox_box', 'post', 'normal', 'high');
