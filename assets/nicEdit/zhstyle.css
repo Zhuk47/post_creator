@@ -4,7 +4,7 @@
 }
 
 .zbox input#image_title {
-    width: 87%;
+    width: 70%;
     border: 1px solid #ddd;
     box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
     background-color: #fff;
@@ -25,6 +25,9 @@
     margin: 0px 0px 10px 10px;
 }
 
+.zbox b {
+    margin-left: 1%;
+}
 #zhbut {
     text-align: center;
 }
